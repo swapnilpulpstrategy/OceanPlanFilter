@@ -16,15 +16,22 @@ const Scene = require('Scene');
 const Patches = require('Patches');
 const Random = require('Random');
 const Time = require('Time');
+const Materials = require('Materials');
+
 
 // Use export keyword to make a symbol available in scripting debug console
 export const Diagnostics = require('Diagnostics');
 
 // To access scene objects
 var garbageNullObject = Scene.root.find('garbageNullObject');
+var garbageObjectPlane = Scene.root.find('garbage');
 var scoreObjectRef = Scene.root.find('score');
 var timerObjectRef = Scene.root.find('timer');
 var gameOverFinalScoreRef = Scene.root.find('scoreGameOver');
+const garbageMat1 = Materials.get('mat_garbage1');
+const garbageMat2 = Materials.get('mat_garbage2');
+const garbageMat3 = Materials.get('mat_garbage3');
+garbageObjectPlane.material = garbageMat2;
 
 // Get Patches Value
 var objectTapTrigger = Patches.getBooleanValue('objectTapTrigger');
@@ -57,46 +64,55 @@ objectTapTrigger.monitor().subscribe(function (e)
   {
      garbageObjectRef.x = 20;
      garbageObjectRef.y = 90;
+     garbageObjectPlane.material = garbageMat1;
   }
   else if (randomNumGreaterVal > 1 && randomNumGreaterVal < 2)
   {
     garbageObjectRef.x = 100;
     garbageObjectRef.y = 20;
+    garbageObjectPlane.material = garbageMat2;
   }
   else if (randomNumGreaterVal > 2 && randomNumGreaterVal < 3)
   {
     garbageObjectRef.x = -120;
     garbageObjectRef.y = -20;
+    garbageObjectPlane.material = garbageMat3;
   }
   else if (randomNumGreaterVal > 3 && randomNumGreaterVal < 4)
   {
     garbageObjectRef.x = 60;
     garbageObjectRef.y = 120;
+    garbageObjectPlane.material = garbageMat1;
   }
   else if (randomNumGreaterVal > 4 && randomNumGreaterVal < 5)
   {
     garbageObjectRef.x = 180;
     garbageObjectRef.y = 70;
+    garbageObjectPlane.material = garbageMat2;
   }
   else if (randomNumGreaterVal > 5 && randomNumGreaterVal < 6)
   {
     garbageObjectRef.x = -30;
     garbageObjectRef.y = 30;
+    garbageObjectPlane.material = garbageMat3;
   }
   else if (randomNumGreaterVal > 6 && randomNumGreaterVal < 7)
   {
     garbageObjectRef.x = 30;
     garbageObjectRef.y = 130;
+    garbageObjectPlane.material = garbageMat1;
   }
   else if (randomNumGreaterVal > 7 && randomNumGreaterVal < 8)
   {
     garbageObjectRef.x = -90;
     garbageObjectRef.y = 60;
+    garbageObjectPlane.material = garbageMat2;
   }
   else
   {
     garbageObjectRef.x = 140;
     garbageObjectRef.y = 100;
+    garbageObjectPlane.material = garbageMat3;
   }
 });
 
